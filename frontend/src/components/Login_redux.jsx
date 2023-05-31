@@ -26,8 +26,10 @@ const Login_redux = () => {
   };
 
   let loginUser = () => {
-    dispatch(login(userData));
-    setUserData({ username: "", password: "" });
+    if (userData.username !== "" && userData.password !== "") {
+      dispatch(login(userData));
+      setUserData({ username: "", password: "" });
+    } else return alert("All fields are required");
   };
 
   useEffect(() => {
@@ -42,12 +44,15 @@ const Login_redux = () => {
       {loggedIn ? (
         <>
           <h1 className="welcome_heading">Welcome, {user.username}</h1>
-          <button onClick={() => dispatch(logout())} className="logout_btn">Logout</button>
+          <button onClick={() => dispatch(logout())} className="logout_btn">
+            Logout
+          </button>
         </>
       ) : (
         <form onSubmit={(e) => e.preventDefault()} className="login_form">
           <h1>Login</h1>
           <input
+            required
             type="text"
             placeholder="Enter username"
             name="username"
@@ -55,6 +60,7 @@ const Login_redux = () => {
             onChange={handleLogin}
           />
           <input
+            required
             type="password"
             placeholder="Enter Password"
             name="password"
