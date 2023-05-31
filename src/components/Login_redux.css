@@ -1,0 +1,70 @@
+.login_form {
+    /* border: 1px solid red; */
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin: 3rem auto;
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.login_form input {
+    width: 80%;
+    margin: 10px auto;
+    padding: 0.8rem;
+    border-radius: 0.2rem;
+    background-color: #F6F1F1;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.login_form>h1 {
+    margin: 0 0 0.9rem 0;
+    color: #183A1D;
+    text-align: center;
+}
+
+.login_btn {
+    display: block;
+    margin: 10px auto;
+    width: 85%;
+    border: none;
+    padding: 11px;
+    color: white;
+    background-color: #4942E4;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.login_google {
+    display: block;
+    margin: 10px auto;
+    width: 85%;
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color: #E57C23;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.logout_btn {
+    display: block;
+    margin: 10px auto;
+    width: 30%;
+    border: none;
+    padding: 11px;
+    color: white;
+    background-color: #4942E4;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.welcome_heading {
+    text-align: center;
+    margin: 50px;
+}

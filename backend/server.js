@@ -4,15 +4,16 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const cors = require("cors")
 require("dotenv").config()
-// const MongoStore = require('connect-mongo')(session);
+
 
 // Create an instance of Express
 const app = express();
-app.use(cors({
-  origin:["http://localhost:5000/google"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+// app.use(cors({
+//   origin:["http://localhost:5000/google"],
+//   methods: ["GET", "POST", "PUT", "DELETE"],
   
-}));
+// }));
+app.use(cors());
 app.use(express.json())
 
 app.use(
@@ -29,12 +30,9 @@ passport.use(
       {
         clientID: process.env.clientID,
         clientSecret: process.env.clientSecret,
-        callbackURL: 'http://localhost:3000/google/callback', 
+        callbackURL: 'http://localhost:3000', 
       },
       (accessToken, refreshToken, profile, done) => {
-        // Here, you can handle the user data received from Google
-        // and save it to your database or perform any required actions
-        // You can access user data in the 'profile' object
         return done(null, profile);
       }
     )
@@ -50,11 +48,11 @@ app.get(
   );
   
   app.get(
-    '/google/callback',
+    '/',
     passport.authenticate('google', { failureRedirect: '/' }),
     (req, res) => {
       // Redirect the user to the authenticated route on successful authentication
-      res.redirect('/authenticate');
+      res.redirect('/');
     }
   );
 

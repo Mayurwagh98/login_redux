@@ -2,6 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "../Redux/action";
+import "./Login_redux.css";
+import LoginOauth from "./Login_outh";
+import "./Login_redux.css";
 
 const Login_redux = () => {
   let [userData, setUserData] = useState({
@@ -38,11 +41,12 @@ const Login_redux = () => {
     <div>
       {loggedIn ? (
         <>
-          <h1>Welcome, {user.username}</h1>
-          <button onClick={() => dispatch(logout())}>Logout</button>
+          <h1 className="welcome_heading">Welcome, {user.username}</h1>
+          <button onClick={() => dispatch(logout())} className="logout_btn">Logout</button>
         </>
       ) : (
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={(e) => e.preventDefault()} className="login_form">
+          <h1>Login</h1>
           <input
             type="text"
             placeholder="Enter username"
@@ -57,7 +61,11 @@ const Login_redux = () => {
             value={userData.password}
             onChange={handleLogin}
           />
-          <input type="submit" value="Login" onClick={loginUser} />
+          <button onClick={loginUser} className="login_btn">
+            Log In
+          </button>
+
+          <LoginOauth />
         </form>
       )}
     </div>

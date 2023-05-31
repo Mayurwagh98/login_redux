@@ -1,7 +1,9 @@
 import React from "react";
-import axios from "axios"
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 
 const LoginOauth = () => {
+  const { loggedIn, user } = useSelector((state) => state);
   const handleLogin = async () => {
     try {
       const response = await axios.get("http://localhost:5000/google");
@@ -13,7 +15,11 @@ const LoginOauth = () => {
 
   return (
     <div>
-      <button onClick={handleLogin}>Login with Google</button>
+      {loggedIn ? null : (
+        <button onClick={handleLogin} className="login_google">
+          Login with Google
+        </button>
+      )}
     </div>
   );
 };
