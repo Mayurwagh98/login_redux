@@ -41,7 +41,7 @@ passport.use(
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // Routes
+
 app.get(
     '/google',
     passport.authenticate('google', { scope: ['profile'] })
@@ -51,17 +51,16 @@ app.get(
     '/',
     passport.authenticate('google', { failureRedirect: '/' }),
     (req, res) => {
-      // Redirect the user to the authenticated route on successful authentication
       res.redirect('/');
     }
   );
 
   app.get('/', (req, res) => {
-    // Render the authenticated page for the user
+    
     res.send('Logged in!');
   });
 
-  // Start the server
+  
 app.listen(5000, () => {
     console.log('Server started on port 5000');
   });
